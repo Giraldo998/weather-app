@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="assets/css/styles.css" />
+		<title>Weather App</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="search-box">
+				<i class="fa-solid fa-location-dot"></i>
+				<input type="text" placeholder="Enter your location" />
+				<button class="fa-solid fa-magnifying-glass"></button>
+			</div>
+			<div class="choice-places">
+				<ul></ul>
+			</div>
+			<div class="not-found">
+				<img src="assets/img/404.svg" />
+				<p>Oops! Invalid location 😞</p>
+			</div>
+			<div class="weather-box">
+				<img src="" />
+				<p class="temperature"></p>
+				<p class="description"></p>
+			</div>
+			<div class="weather-details">
+				<div class="humidity">
+					<i class="fa-solid fa-water"></i>
+					<div class="text">
+						<span></span>
+						<p>Humedad</p>
+					</div>
+				</div>
+				<div class="wind">
+					<i class="fa-solid fa-wind"></i>
+					<div class="text">
+						<span></span>
+						<p>Vientos</p>
+					</div>
+				</div>
+				<div class="high">
+					<i class="fas fa-temperature-high"></i>
+						<div class="text">
+						<span></span>
+						<p>Máxima</p>
+					</div>
+				</div>
+				<div class="low">
+					<i class="fas fa-temperature-low"></i>
+						<div class="text">
+						<span></span>
+						<p>Mínima</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script
+		src="https://kit.fontawesome.com/d4db07d71d.js"
+		crossorigin="anonymous"
+	></script>
+	<script src="assets/Js/index.js" type="module"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+</html>
