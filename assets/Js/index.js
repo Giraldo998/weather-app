@@ -33,13 +33,13 @@ const main = async () => {
 		console.log(cities);
 
 		const listOfCities = await cities.map((c) => c.nombre);
-
+		
 		const cityListHTML = `${listOfCities
 			.map((cityName) => `<li class="city-option">${cityName}</li><br>`)
 			.join('')}`;
-		places.innerHTML = cityListHTML;
-		placeContainer.style.display = 'block';
-
+			places.innerHTML = cityListHTML;
+			placeContainer.style.display = 'block';
+			
 		const cityOptions = document.querySelectorAll('.city-option');
 
 		cityOptions.forEach((option) => {
@@ -120,6 +120,8 @@ const main = async () => {
 					weatherDetails.classList.add('fadeIn');
 				});
 			});
+			weatherBox.style.display = 'none';
+			weatherDetails.style.display = 'none';
 			if (placeContainer.style.display === 'block') {
 				container.style.height = '400px';
 			}
