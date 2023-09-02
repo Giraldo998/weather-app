@@ -120,8 +120,10 @@ const main = async () => {
 					weatherDetails.classList.add('fadeIn');
 				});
 			});
+
 			weatherBox.style.display = 'none';
 			weatherDetails.style.display = 'none';
+			
 			if (placeContainer.style.display === 'block') {
 				container.style.height = '400px';
 			}
