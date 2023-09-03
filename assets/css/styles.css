@@ -112,7 +112,15 @@ body {
 	list-style: none;
 }
 .choice-places .city-option {
+	display: flex;
+	flex-direction: column;
 	cursor: pointer;
+	font-weight: 700;
+}
+.city-option span{
+	font-size: 15px;
+	font-weight: 400;
+	opacity: 0.9;
 }
 .not-found {
 	display: none;

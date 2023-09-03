@@ -5,6 +5,7 @@ class Busquedas {
 				'pk.eyJ1IjoiLXNlYmFzLSIsImEiOiJjbGs1NjZidHUxMWpyM3Rxb3hwdHI3M2tiIn0.lCq7M7-BrtEdmHhojQoQ7w',
 			limit: 5,
 			language: 'es',
+			types: 'country,place',
 		};
 	}
 
@@ -16,12 +17,21 @@ class Busquedas {
 			});
 			const resp = await instance.get();
 
-			return resp.data.features.map((lugar) => ({
-				id: lugar.id,
-				nombre: lugar.place_name,
-				lng: lugar.center[0],
-				lat: lugar.center[1],
-			}));
+			return resp.data.features.map((lugar) => {
+				const lugarInfo = {
+					id: lugar.id,
+					nombre: lugar.text,
+					lng: lugar.center[0],
+					lat: lugar.center[1],
+				};
+		 
+				if (lugar.context && lugar.context.length >= 2) {
+					lugarInfo.dep = lugar.context[0].text;
+					lugarInfo.pais = lugar.context[1].text;
+				}
+		 
+				return lugarInfo;
+			});
 		} catch (error) {
 			return [];
 		}

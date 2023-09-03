@@ -30,15 +30,24 @@ const main = async () => {
 		}
 		error404.style.display = 'none';
 		error404.classList.remove('fadeIn');
-		console.log(cities);
 
-		const listOfCities = await cities.map((c) => c.nombre);
-		
-		const cityListHTML = `${listOfCities
-			.map((cityName) => `<li class="city-option">${cityName}</li><br>`)
-			.join('')}`;
+		const listOfPlaces = await cities.map((p) => ({
+			place: p.nombre,
+			state: p.dep,
+			country: p.pais
+		}));
+
+		const placePrint = (()=>{
+			let cityListHTML= '';
+			for (const { place, state, country } of listOfPlaces) {
+				cityListHTML += `<li class="city-option">${place}<span>
+				${(state === undefined)? '' : `${state}, ${country}`}</span></li><br>`;
+			}
+			
 			places.innerHTML = cityListHTML;
 			placeContainer.style.display = 'block';
+		})
+		placePrint();
 			
 		const cityOptions = document.querySelectorAll('.city-option');
 
@@ -75,7 +84,6 @@ const main = async () => {
 						return;
 					}
 
-					console.log(data);
 					error404.style.display = 'none';
 					error404.classList.remove('fadeIn');
 
