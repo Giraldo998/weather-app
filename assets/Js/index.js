@@ -13,13 +13,14 @@ const main = async () => {
 		const busquedas = new Busquedas();
 		const place = document.querySelector('.search-box input');
 		const city = place.value;
-		let infoLat = 0;
-		let infoLng = 0;
-
+		let lat = 0;
+		let lng = 0;
+		
 		if (city === '') return;
-
+		
 		const cities = await busquedas.ciudad(city);
-
+		
+		console.log(cities);
 		if (cities.length === 0) {
 			container.style.height = '400px';
 			weatherBox.style.display = 'none';
@@ -31,38 +32,32 @@ const main = async () => {
 		error404.style.display = 'none';
 		error404.classList.remove('fadeIn');
 
-		const listOfPlaces = await cities.map((p) => ({
-			place: p.nombre,
-			state: p.dep,
-			country: p.pais
-		}));
+		const lugarSelec = cities.map( c => (c.name));
+   	const cityListHTML = `${lugarSelec.map(cityName => 
+			`<li class="city-option"><p>${cityName.split(',')[0]}<span>,</span></p><p class="subtitle">${(cityName.split(',')[1] === undefined) ? '' : `${cityName.split(',')[1]},${cityName.split(',')[2]}`}</li><br>`).join('')}`;
+			
+		places.innerHTML = cityListHTML;
+		placeContainer.style.display = 'block';
+		
+		if (placeContainer.style.display === 'block') {
+			container.style.height = '400px';
+		}
 
-		const placePrint = (()=>{
-			let cityListHTML= '';
-			for (const { place, state, country } of listOfPlaces) {
-				cityListHTML += `<li class="city-option">${place}<span>
-				${(state === undefined)? '' : `${state}, ${country}`}</span></li><br>`;
-			}
-			
-			places.innerHTML = cityListHTML;
-			placeContainer.style.display = 'block';
-		})
-		placePrint();
-			
 		const cityOptions = document.querySelectorAll('.city-option');
 
 		cityOptions.forEach((option) => {
 			option.addEventListener('click', () => {
 				const selectedCityName = option.textContent;
 				const selectedCity = cities.find(
-					(city) => city.nombre === selectedCityName
-				);
+					(city) => city.name === selectedCityName
+					);
 
 				if (selectedCity) {
-					infoLat = selectedCity.lat;
-					infoLng = selectedCity.lng;
+					lat = selectedCity.lat;
+					lng = selectedCity.lng;
 
 					const valueToShow = `${selectedCityName}`;
+					
 					place.value = valueToShow;
 				} else {
 					place.value = selectedCityName;
@@ -74,7 +69,7 @@ const main = async () => {
 					container.style.height = '660px';
 				}
 
-				busquedas.climaLugar(infoLat, infoLng).then((data) => {
+				busquedas.climaLugar(lat, lng).then((data) => {
 					if (data.length === 0) {
 						container.style.height = '400px';
 						weatherBox.style.display = 'none';
@@ -83,7 +78,8 @@ const main = async () => {
 						error404.classList.add('fadeIn');
 						return;
 					}
-
+					console.log(selectedCity);
+					console.log(data);
 					error404.style.display = 'none';
 					error404.classList.remove('fadeIn');
 
@@ -132,9 +128,6 @@ const main = async () => {
 			weatherBox.style.display = 'none';
 			weatherDetails.style.display = 'none';
 			
-			if (placeContainer.style.display === 'block') {
-				container.style.height = '400px';
-			}
 		});
 	});
 };

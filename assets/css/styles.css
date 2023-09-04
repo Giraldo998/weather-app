@@ -112,12 +112,13 @@ body {
 	list-style: none;
 }
 .choice-places .city-option {
-	display: flex;
-	flex-direction: column;
 	cursor: pointer;
 	font-weight: 700;
 }
 .city-option span{
+	display: none;
+}
+.city-option .subtitle{
 	font-size: 15px;
 	font-weight: 400;
 	opacity: 0.9;

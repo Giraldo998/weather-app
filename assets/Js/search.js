@@ -17,21 +17,12 @@ class Busquedas {
 			});
 			const resp = await instance.get();
 
-			return resp.data.features.map((lugar) => {
-				const lugarInfo = {
+			return resp.data.features.map((lugar) => ({
 					id: lugar.id,
-					nombre: lugar.text,
+					name: lugar.place_name,
 					lng: lugar.center[0],
 					lat: lugar.center[1],
-				};
-		 
-				if (lugar.context && lugar.context.length >= 2) {
-					lugarInfo.dep = lugar.context[0].text;
-					lugarInfo.pais = lugar.context[1].text;
-				}
-		 
-				return lugarInfo;
-			});
+			}));
 		} catch (error) {
 			return [];
 		}
