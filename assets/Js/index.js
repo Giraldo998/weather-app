@@ -98,6 +98,9 @@ const main = async () => {
 						case 'Rain':
 							image.src = '/assets/img/rain.png';
 							break;
+							case 'Drizzle':
+							image.src = '/assets/img/rain.png';
+							break;
 						case 'Snow':
 							image.src = '/assets/img/snow.png';
 							break;
