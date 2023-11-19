@@ -16,7 +16,10 @@ body {
 	-ms-flex-pack: center;
 	justify-content: center;
 	height: 100vh;
-	background: #06283d;
+	background: #0F2027;
+	background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+	background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+
 }
 .container {
 	position: relative;
