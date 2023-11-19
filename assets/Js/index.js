@@ -107,7 +107,7 @@ const main = async () => {
 							image.src = '/assets/img/weather-status/rain.png';
 							break;
 						case 'Drizzle':
-							image.src = '/assets/img/weather-status/raindrop.png';
+							image.src = '/assets/img/weather-status/rain.png';
 							break;
 						case 'Snow':
 							image.src = '/assets/img/weather-status/snow.png';
@@ -133,7 +133,6 @@ const main = async () => {
 					wind.innerHTML = `${parseInt(data.speed)}Km/h`;
 					high.innerHTML = `${parseInt(data.max)}<span>°C</span>`;
 					low.innerHTML = `${parseInt(data.min)}<span>°C</span>`;
-					console.log(data.time);
 
 					weatherBox.style.display = '';
 					weatherDetails.style.display = '';

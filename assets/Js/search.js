@@ -41,7 +41,9 @@ class Busquedas {
 				params: { ...this.paramsOpenWeather, lat, lon },
 			});
 			const resp = await instance.get();
-			const { weather, main, wind } = resp.data;
+			const { weather, main, wind, dt, timezone } = resp.data;
+			const localTime = new Date((dt - timezone) * 1000).toLocaleTimeString();
+
 			return {
 				status: weather[0].description, 
 				desc: weather[0].main, 
@@ -50,6 +52,9 @@ class Busquedas {
 				temp: main.temp, 
 				humidity: main.humidity,
 				speed: wind.speed,
+				time: localTime,
+				dt,
+				timezone
 			};
 		} catch (error) {
 			return [];
