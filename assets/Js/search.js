@@ -42,7 +42,7 @@ class Busquedas {
 			});
 			const resp = await instance.get();
 			const { weather, main, wind, dt, timezone } = resp.data;
-			const localTime = new Date((dt - timezone) * 1000).toLocaleTimeString();
+			const localTime = new Date((dt) * 1000).toLocaleTimeString();
 
 			return {
 				status: weather[0].description, 

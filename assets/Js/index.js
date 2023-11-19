@@ -17,7 +17,6 @@ const main = async () => {
 	search.addEventListener('click', async () => {
 		const busquedas = new Busquedas();
 		const place = document.querySelector('.search-box input');
-		document.body.style.background = '#06283d'
 		const city = place.value;
 		let lat = 0;
 		let lng = 0;
@@ -59,10 +58,10 @@ const main = async () => {
 				if (selectedCity) {
 					lat = selectedCity.lat;
 					lng = selectedCity.lng;
+
+					// const valueToShow = `${selectedCityName}`;
 					
-					const valueToShow = `${selectedCityName}`;
-					
-					place.value = valueToShow;
+					place.value = selectedCityName;
 				} else {
 					place.value = selectedCityName;
 				}
@@ -95,7 +94,6 @@ const main = async () => {
 					const wind = document.querySelector('.weather-details .wind span');
 					const	high = document.querySelector('.weather-details .high span');
 					const low = document.querySelector('.weather-details .low span');
-					// const time = new Date();
 					
 					switch (data.desc) {
 						case 'Clear':
@@ -107,7 +105,7 @@ const main = async () => {
 							image.src = '/assets/img/weather-status/rain.png';
 							break;
 						case 'Drizzle':
-							image.src = '/assets/img/weather-status/rain.png';
+							image.src = '/assets/img/weather-status/raindrop.png';
 							break;
 						case 'Snow':
 							image.src = '/assets/img/weather-status/snow.png';
