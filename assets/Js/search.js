@@ -1,4 +1,5 @@
 class Busquedas {
+
 	get paramsMapbox() {
 		return {
 			access_token:
@@ -27,6 +28,7 @@ class Busquedas {
 			return [];
 		}
 	}
+	
 	get paramsOpenWeather() {
 		return {
 			appid: 'b1245b8df01ce0058c05f34e5a5c7d59',
@@ -34,6 +36,7 @@ class Busquedas {
 			lang: 'es',
 		};
 	}
+
 	async climaLugar(lat, lon) {
 		try {
 			const instance = axios.create({

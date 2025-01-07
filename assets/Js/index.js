@@ -11,7 +11,7 @@ const place = document.querySelector('.search-box input');
 
 place.addEventListener ('click', ()=>{
 	place.value = '';
-})
+});
 
 const main = async () => {
 	search.addEventListener('click', async () => {
@@ -34,6 +34,7 @@ const main = async () => {
 			error404.classList.add('fadeIn');
 			return;
 		}
+
 		error404.style.display = 'none';
 		error404.classList.remove('fadeIn');
 
@@ -58,8 +59,6 @@ const main = async () => {
 				if (selectedCity) {
 					lat = selectedCity.lat;
 					lng = selectedCity.lng;
-
-					// const valueToShow = `${selectedCityName}`;
 					
 					place.value = selectedCityName;
 				} else {
@@ -82,8 +81,7 @@ const main = async () => {
 						error404.classList.add('fadeIn');
 						return;
 					}
-					console.log(selectedCity);
-					console.log(data);
+
 					error404.style.display = 'none';
 					error404.classList.remove('fadeIn');
 					
@@ -97,29 +95,36 @@ const main = async () => {
 					
 					switch (data.desc) {
 						case 'Clear':
-							(data.time>=18 || data.time<=6 )
-								? image.src = '/assets/img/weather-status/night-clear.png'
-								: image.src = '/assets/img/weather-status/clear.png';
+							image.src = '/assets/img/weather-status/clear.png';
+							image.alt = 'Clear'; 
 							break;
 						case 'Rain':
 							image.src = '/assets/img/weather-status/rain.png';
+							image.alt = 'Rain';
 							break;
 						case 'Drizzle':
 							image.src = '/assets/img/weather-status/raindrop.png';
+							image.alt = 'Raindrop';
 							break;
 						case 'Snow':
 							image.src = '/assets/img/weather-status/snow.png';
+							image.alt = 'snow';
 							break;
 						case 'Clouds':
 							image.src = '/assets/img/weather-status/clouds.png';
+							image.alt = 'Clouds';
 							break;
 						case 'Haze':
-								image.src = '/assets/img/weather-status/mist.png';
-								break;
+							image.src = '/assets/img/weather-status/haze.png';
+							image.alt = 'Haze';
+							break;
+						case 'Mist':
+							image.src = '/assets/img/weather-status/haze.png';
+							image.alt = 'Mist';
+							break;
 						case 'Fog':
-							(data.time>= 18 || data.time<= 6)
-								? image.src = '/assets/img/weather-status/night-cloudy.png'
-								: image.src = '/assets/img/weather-status/cloudy.png';
+							image.src = '/assets/img/weather-status/cloudy.png';
+							image.alt = 'cloudy';
 							break;
 						default:
 							image.src = '';
