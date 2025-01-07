@@ -96,38 +96,39 @@ const main = async () => {
 					switch (data.desc) {
 						case 'Clear':
 							image.src = '/assets/img/weather-status/clear.png';
-							image.alt = 'Clear'; 
+							image.alt = 'Clear icon'; 
 							break;
 						case 'Rain':
 							image.src = '/assets/img/weather-status/rain.png';
-							image.alt = 'Rain';
+							image.alt = 'Rain icon';
 							break;
 						case 'Drizzle':
 							image.src = '/assets/img/weather-status/raindrop.png';
-							image.alt = 'Raindrop';
+							image.alt = 'Raindrop icon';
 							break;
 						case 'Snow':
 							image.src = '/assets/img/weather-status/snow.png';
-							image.alt = 'snow';
+							image.alt = 'snow icon';
 							break;
 						case 'Clouds':
 							image.src = '/assets/img/weather-status/clouds.png';
-							image.alt = 'Clouds';
+							image.alt = 'Clouds icon';
 							break;
 						case 'Haze':
 							image.src = '/assets/img/weather-status/haze.png';
-							image.alt = 'Haze';
+							image.alt = 'Haze icon';
 							break;
 						case 'Mist':
 							image.src = '/assets/img/weather-status/haze.png';
-							image.alt = 'Mist';
+							image.alt = 'Mist icon';
 							break;
 						case 'Fog':
 							image.src = '/assets/img/weather-status/cloudy.png';
-							image.alt = 'cloudy';
+							image.alt = 'cloudy icon';
 							break;
 						default:
 							image.src = '';
+							image.alt = `${data.desc} icon`;
 					}
 
 					temperature.innerHTML = `${parseInt(data.temp)}<span>°C</span>`;
